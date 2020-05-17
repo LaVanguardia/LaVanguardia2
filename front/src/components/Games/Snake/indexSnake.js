@@ -190,6 +190,9 @@ class IndexSnake extends Component {
 
 
         <div className="snakeGameContainer">
+        {this.state.points >= 0 && this.state.gameStarted != true ?
+        <Ranking  game_score="snake_score"/> 
+           : null }
         {this.state.gameStarted != true
         ?
         <div id="buttonContainer">
@@ -200,7 +203,7 @@ class IndexSnake extends Component {
         </div>
         :  null
 
-        }
+        } 
         <div className="game-area">
           <Snake snakeDots={this.state.snakeDots}/>
           <Food dot={this.state.food}/>

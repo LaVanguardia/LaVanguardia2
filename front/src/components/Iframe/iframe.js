@@ -7,10 +7,10 @@ import './iframe.css';
 
 const items = ["carousel", "tacleclick","nonogram", "cityplay","snake", "MemoryGame", "OneToFifty"]
 
-const displayRandomItem = () => {
+/*const displayRandomItem = () => {
   const randomItem = items[Math.floor(Math.random()*items.length)]
   return randomItem
-}
+}*/
 
 const Iframe = () => {
   return (
