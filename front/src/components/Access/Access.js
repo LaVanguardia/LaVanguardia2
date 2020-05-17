@@ -23,7 +23,7 @@ function Access() {
 
     let renderSwitch = () => {
         switch (menuItemSelected) {
-            case 'SignIn':
+            case 'SignUp':
                 return (<SignUp />)
             case 'LogIn':
                 return (<LogIn />)

@@ -97,8 +97,8 @@ class App extends Component {
               <LogIn/>
             </Route>
             <Route path ='/Access'>
-          <Access/>
-        </Route>
+              <Access/>
+            </Route>
           </Switch>
           <Footer />
         </div>
