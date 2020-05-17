@@ -27,6 +27,7 @@
     padding: 0 10px;
 }
 .navbarRow {
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
     margin-right: -8px;
@@ -73,8 +74,12 @@
     border-radius: 0;
     font-family: 'Neuton', serif;
     font-size: 20px;
+}
 
 
+.imageUserLogin{
+    height: 40px;
+    width: 40px;  
 }
 
 
@@ -104,7 +109,11 @@
 
 }
 
-
+.loginButton{
+    display: 'flex';
+    text-decoration: 'none';
+    color: 'white'
+}
 
 @media (max-width: 700px) {
     #header-profile__wrapper {
@@ -118,8 +127,8 @@
     .nav-list-item {
         float: none;
     }
-
 }
+
 @media (max-width: 331px) {
   #header-profile {
       display: none;

@@ -8,7 +8,9 @@ import CloseButton from '../../SharedButtons/CloseButton';
 import pointer from './images/pointer.png';
 import backgroundBig from './images/backgroundBig.png';
 import backgroundSmall from './images/backgroundSmall.png';
-import { SaveScore } from '../../../sheredFunctions/SheredFunctions'
+import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
+import Ranking from '../../Ranking/Ranking'
+
 
 
 const getRandomCoordinates = () => {
@@ -21,6 +23,7 @@ const getRandomCoordinates = () => {
 const initialState = {
   gameStarted: false,
   gameEnded: true,
+  ranking: false,
   food: getRandomCoordinates(),
   points: 0,
   speed: 200,
@@ -31,7 +34,6 @@ const initialState = {
   ],
 }
 const intervalFunction = (move, speed) => {
-  console.log('hola hijo de puta', speed)
   return (setInterval(move, speed))
 }
 class IndexSnake extends Component {
@@ -169,9 +171,23 @@ class IndexSnake extends Component {
      }
    }  */
   onGameOver() {
-    SaveScore(this.state.points, this.context.state.user.results[0].user_id, "snake_score")
     clearInterval(this.state.interval)
-    this.setState(initialState)
+    if(this.context.state.user.results !== undefined){
+        SaveScore(this.state.points, this.context.state.user.results[0].user_id, "snake_score")
+    }
+    this.setState({
+      gameStarted: false,
+      gameEnded: true,
+      ranking: true,
+      food: getRandomCoordinates(),
+      speed: 200,
+      direction: 'RIGHT',
+      snakeDots: [
+        [0, 0],
+        [2, 0]
+      ],
+    })
+
   }
   render() {
     return (
@@ -183,36 +199,42 @@ class IndexSnake extends Component {
         <CloseButton />
         <h1 style={{ color: 'lightgrey', paddingTop: '15px', marginBottom: '15px' }}>Juega al SNAKE</h1>
           <p className="">Points: {this.state.points}</p>
-
-
-        <div className="snakeGameContainer">
-        {this.state.gameStarted != true
-        ?
-        <div id="buttonContainer">
-          <button id="startSnakeButtonIframe" onClick={this.onClickStart}>
-            <p>Juega al SNAKE!</p>
-          </button>
-          <button id="startSnakeButton" onClick={this.onClickStart}>PLAY!</button>
-        </div>
-        : null
-        }
-        <div className="game-area">
-          <Snake snakeDots={this.state.snakeDots}/>
-          <Food dot={this.state.food}/>
-        </div>
-
-          <div className="SnakeDirectionsMobilePad">
-            <button className="padButton" value='UP' onClick={this.checkButtonsDirections}>U</button>
-            <div id="sidesArrowsRow">
-              <button className="padButton" value='LEFT' onClick={this.checkButtonsDirections}>L</button>
-              <button className="padButton" value='RIGHT' onClick={this.checkButtonsDirections}>R</button>
-            </div>
-            <button id="downButton" className="padButton" value='DOWN' onClick={this.checkButtonsDirections}>D</button>
+          <div className="snakeGameContainer">
+          {this.state.ranking &&
+            <Ranking gameName="snake_score" scoreState={this.state.points}/>
+          }
+          {this.state.gameStarted != true
+          ?
+          <div id="buttonContainer">
+            <button id="startSnakeButtonIframe" onClick={this.onClickStart}>
+              <p>Juega al SNAKE!</p>
+            </button>
+            <button id="startSnakeButton" onClick={this.onClickStart}>PLAY!</button>
           </div>
+          : null
+          }
+          <div className="game-area">
+            <Snake snakeDots={this.state.snakeDots}/>
+            <Food dot={this.state.food}/>
+          </div>
+
+            <div className="SnakeDirectionsMobilePad">
+              <button className="padButton" value='UP' onClick={this.checkButtonsDirections}>U</button>
+              <div id="sidesArrowsRow">
+                <button className="padButton" value='LEFT' onClick={this.checkButtonsDirections}>L</button>
+                <button className="padButton" value='RIGHT' onClick={this.checkButtonsDirections}>R</button>
+              </div>
+              <button id="downButton" className="padButton" value='DOWN' onClick={this.checkButtonsDirections}>D</button>
+            </div>
+
+          </div>
+          <img className="backgroundSmallLeft" src={backgroundSmall} />
+          <img className="backgroundSmallRight" src={backgroundSmall} />
+
         </div>
-        <img className="backgroundSmallLeft" src={backgroundSmall} />
-        <img className="backgroundSmallRight" src={backgroundSmall} />
-      </div>
+
+
+
     );
   }
 }

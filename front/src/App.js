@@ -5,7 +5,6 @@ import Navbar from './components/Navbar/navbar';
 import Footer from './components/Footer/Footer'
 import AppCapitals from './components/Games/ChoseCapitals/appCapitals';
 import ButtonUserLogged from './components/ButtonUserLogged/ButtonUserLogged'
-import UserProfile from './components/UserProfile/userprofile'
 import GeoChallenge from './components/Games/GeoChallenge';
 import { Switch, Route } from 'react-router-dom';
 import ButtonGames from './components/HomePage/buttonGames';
@@ -21,6 +20,8 @@ import Access from './components/Access/Access';
 import SignUp from './components/User/SignUp';
 import LogIn from './components/User/Login';
 import PersonalRanking from './components/Ranking/PersonalRanking';
+import UserProfile from './components/UserProfile/userprofile';
+
 
 
 const UserExample = {
@@ -56,6 +57,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/'>
               <LavanguardiaPage />
+            </Route>
+            <Route path='/userprofile'>
+              <UserProfile/>
             </Route>
             <Route path='/cityplay'>
               <AppCapitals />
@@ -98,6 +102,9 @@ class App extends Component {
             </Route>
             <Route path="/PersonalRanking">
               <PersonalRanking/>
+            </Route>
+            <Route path ='/Access'>
+              <Access/>
             </Route>
           </Switch>
           <Footer />

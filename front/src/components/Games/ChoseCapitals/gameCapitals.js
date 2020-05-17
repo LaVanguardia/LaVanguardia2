@@ -12,8 +12,8 @@ import InstructionGames from '../../SharedButtons/InstructionGames';
 import CloseButton from '../../SharedButtons/CloseButton';
 import titleCity from './img/logo-02.png'
 import backgroundCity from './img/fondo_capitales.png';
-import { SaveScore } from '../../../sheredFunctions/SheredFunctions'
-import Ranking from '../../Ranking/Ranking'
+import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
+import Ranking from '../../Ranking/Ranking';
 export default class GameCapitals extends Component {
     static contextType = MyContext
     state = {
@@ -42,11 +42,19 @@ export default class GameCapitals extends Component {
             gameStatus: 'playingGame', //change to the game part
             fourCapitals
         })
+
+        const DisplayRanking = () => {
+            return (<Ranking gameName="city_score"/>)
+        }
         const countdown = () => {
             //prepare the counter
             if (this.state.seconds <= 0) {
                 //when it's finished
+                this.context.state.user.results
+                   ? SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
+                   :  DisplayRanking()
 
+                
 
                 //this.context.changeScore(this.state.score)
                 this.setState({ gameStatus: 'gameOver' })
@@ -91,27 +99,10 @@ export default class GameCapitals extends Component {
         }
     }
     tryAgain = () => {
-        if(this.context.state.user.results[0].user_id){
+        /* if(this.context.state.user.results[0].user_id){
             SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
-        }
-      /* let score = this.state.score;
-      let user_id = this.context.state.user.results[0].user_id
-      console.log(this.context.state.user.results[0].user_id);
-        fetch('http://localhost:5000/game-score', {
-      method: 'PUT',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify({ score , user_id })
+        } */
 
-    }).then(res => {
-        if(res.status === 200 ){
-            console.log('saved score')
-
-        }else{
-            console.log('no hace naa')
-          }
-        }) */
         //in the last state of the game 'end' when we click again  we call the function for playingGame status and change the state for showing this part and reload the default state
         this.getCountry()
         this.setState({
@@ -152,7 +143,7 @@ export default class GameCapitals extends Component {
             gameOver: () => (<div className='playingGame'>
                 <Info style='gameover' text='GAME OVER' />
                 <Info style='score'  text={'SCORE : ' + this.state.score} />
-                <Ranking game_score="city_score"/>
+                <Ranking scoreState={this.state.score} gameName="city_score"/>
                 {/* <Links style='shered-link' /> */}
                 <Button style='play-again' action={this.tryAgain} text='Play Again' />
                 {/* <Exit style='back-menu' text='Exit Game' /> */}
