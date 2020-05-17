@@ -20,13 +20,12 @@ const Ranking=({gameName, scoreState})=>{
             //save score in ddbb
         }else{
             //save score in context
-
         }
     },[])
     const toggle = () => setModal(!modal);
     console.log(state.user)
     return(
-        <Fragment>
+        <div className="modal">
              <Modal isOpen={modal} toggle={toggle} >
                  <ModalBody>
                         {ranking &&
@@ -63,7 +62,7 @@ const Ranking=({gameName, scoreState})=>{
                         </div>}
                     </ModalBody>
              </Modal>
-        </Fragment>
+        </div>
     )
 }
 export default Ranking;

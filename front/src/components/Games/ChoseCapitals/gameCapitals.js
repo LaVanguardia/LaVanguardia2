@@ -46,7 +46,7 @@ export default class GameCapitals extends Component {
             //prepare the counter
             if (this.state.seconds <= 0) {
                 //when it's finished
-                if(this.context.state.user.results[0].user_id){
+                if(this.context.state.user.results !== undefined){
                     SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
                 }
 
@@ -96,7 +96,7 @@ export default class GameCapitals extends Component {
         /* if(this.context.state.user.results[0].user_id){
             SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
         } */
-      
+
         //in the last state of the game 'end' when we click again  we call the function for playingGame status and change the state for showing this part and reload the default state
         this.getCountry()
         this.setState({
