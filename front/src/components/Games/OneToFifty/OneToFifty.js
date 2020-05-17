@@ -24,7 +24,7 @@ export default function OneToFifty() {
         styleNumbers.push(0);
     }
 
-    const startGame = () =>{
+    const startGame = () => {
         setallNumbers(numbers);
         setstyle(styleNumbers);
         setCurrentNumber(1);
@@ -32,7 +32,7 @@ export default function OneToFifty() {
     }
     //Fill all numbers
     useEffect(() => {
-       startGame();
+        startGame();
     }, [])
 
     //Fill the first half array and the second half array
@@ -68,14 +68,20 @@ export default function OneToFifty() {
     return (
         <div className="OneToFifty container-fluid">
             <div className="row rowIcons">
-                <div><InstructionOneToFifty/></div>
-                <div><CloseButtonOneToFifty/></div>
+                <div><InstructionOneToFifty /></div>
+                <div><CloseButtonOneToFifty /></div>
             </div>
             <div className="OneToFiftyContent">
                 {/* MENU */}
                 <div className="row timeAndActualNumber alignCenter">
                     <div className="col-12 col-md-6 justifyCenter">
-                        <p className="chronoText">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
+                        <p className="chronoText" >
+                            {
+                                timeStart === false
+                                    ? '00:00:00'
+                                    : <Chrono currentNumber={currentNumber} />
+                            }
+                        </p>
                     </div>
                     <div className="col-12 col-md-6 justifyCenter">
                         <p>Siguiente numero: &nbsp;&nbsp;&nbsp; <span style={{ fontWeight: "bold", fontSize: "x-large" }}>{currentNumber}</span></p>
@@ -96,7 +102,7 @@ export default function OneToFifty() {
                     <div className="iframeOneToFifty">
                         <div className="row timeAndActualNumberIframe alignCenter">
                             <div className="col-6 justifyCenter">
-                                <p className="chronoText">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
+                                <p className="chronoText ">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
                             </div>
                             <div className="col-6 justifyCenter">
                                 <button className="restartButtonIframe" onClick={() => startGame()}>RESTART</button>

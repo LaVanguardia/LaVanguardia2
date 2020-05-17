@@ -20,6 +20,7 @@ import MemoryGame from './components/Games/MemoryGame/MemoryGame';
 import Access from './components/Access/Access';
 import SignUp from './components/User/SignUp';
 import LogIn from './components/User/Login';
+import PersonalRanking from './components/Ranking/PersonalRanking';
 
 
 const UserExample = {
@@ -46,55 +47,58 @@ class App extends Component {
       timesCliked: false,
     })
   }
-    render(){
-      console.log('comprobación rutas', process.env)
+  render() {
+    console.log('comprobación rutas', process.env)
     return (
       <MyProvider>
         <div className='App'>
           <Navbar />
           <Switch>
-            <Route exact path ='/'>
+            <Route exact path='/'>
               <LavanguardiaPage />
             </Route>
             <Route path='/cityplay'>
-              <AppCapitals/>
+              <AppCapitals />
             </Route>
             <Route path='/geochallenge'>
               <GeoChallenge />
             </Route>
             <Route path='/tacleclick'>
-              <BigBoard/>
+              <BigBoard />
             </Route>
             <Route path='/nonogram'>
-              <NonogramApp/>
+              <NonogramApp />
             </Route>
             <Route path='/iframe'>
-              <Iframe/>
+              <Iframe />
             </Route>
             <Route path='/carousel'>
-              <IframeCarousel/>
+              <IframeCarousel />
             </Route>
             <Route path='/games-section'>
-              <ButtonGames/>
+              <ButtonGames />
             </Route>
             <Route path='/snake'>
-              <IndexSnake/>
+              <IndexSnake />
             </Route>
             <Route path='/OneToFifty'>
               <OneToFifty />
             </Route>
             <Route path='/MemoryGame'>
-              <MemoryGame/>
+              <MemoryGame />
             </Route>
             <Route path='/sign-up'>
-              <SignUp/>
+              <SignUp />
             </Route>
             <Route path='/log-in'>
-              <LogIn/>
+              <LogIn />
             </Route>
-            <Route path ='/Access'>
-          <Access/>
-        </Route>
+            <Route path='/Access'>
+              <Access />
+            </Route>
+            <Route path="/PersonalRanking">
+              <PersonalRanking/>
+            </Route>
           </Switch>
           <Footer />
         </div>

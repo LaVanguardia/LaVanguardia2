@@ -6,9 +6,9 @@ import './LogIn.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { MyContext } from '../../context/MyProvider';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const sendIcon = <FontAwesomeIcon icon={faPaperPlane} size='2x' color='white'/>
+const sendIcon = <FontAwesomeIcon icon={faPaperPlane} size='2x' color='white' />
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +42,8 @@ function LogIn() {
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify({
-        email:data.email, 
-        password:data.password
+        email: data.email,
+        password: data.password
       })
     }).then(res => res.json())
       .then(data => logIn(data))
@@ -63,7 +63,7 @@ function LogIn() {
               value={data.password}
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
-          < div className = "col-12 aligItems" >
+          < div className="col-12 aligItems" >
             <Button
               type="submit"
               variant="contained"
@@ -73,9 +73,11 @@ function LogIn() {
             >
               Log In
             </Button>
+          </div>
+          <div className="col-12">
             <Link to='games-section' >
-          <button className='center-button'> MÁS JUEGOS </button>
-      </Link>
+              <button className='center-button'> MÁS JUEGOS </button>
+            </Link>
           </div>
         </div>
       </form>
