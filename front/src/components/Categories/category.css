@@ -1,6 +1,6 @@
 .navCategories {
   background-color: #F0F0F0;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   flex-wrap: wrap;
   padding-left: 10%;
