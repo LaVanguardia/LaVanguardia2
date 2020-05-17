@@ -21,7 +21,7 @@ class Header extends React.Component {
                             INTÉNTALO OTRA VEZ
                         </button>
                         <button className="winner-reinit-button-iframe" onClick={this.props.resetGame}>{`${ Math.round(10 / this.props.tryes * 10) }/ 6 pts`} <br/>RESTART</button>
-                        <Ranking game_score="memory_score"/>
+                        <Ranking gameName="memory_score" scoreState={this.props.tryes} />
                         </div>
 
                     :  <div>

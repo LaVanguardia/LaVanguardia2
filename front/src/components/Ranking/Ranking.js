@@ -1,86 +1,35 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import shortId from 'shortid';
 import {
     Button, Modal, ModalBody, ModalFooter, closeAll
 } from 'reactstrap';
 import './Ranking.css';
-
-/*export class Ranking extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            modal: true,
-            ranking: []
-         
-        }
-    }
-
-    componentDidMount() {
-        fetch(`http://localhost:5000/ranking/${this.props.game_score}`)
-            .then(res => res.json())
-            .then(data => this.setState({ranking: data})) 
-    }
-
-    toggle = () => this.setState({
-            modal: !this.state.modal
-        })
-    
-   
-  render() {
-
-      return (
-        < div className = "instructionGames" >
-                 <Modal isOpen={this.state.modal} toggle={this.toggle} style={{ marginTop:"10%"}}>
-                 <ModalBody>
-                        {this.state.ranking &&
-                            <table style={{color:'black', zIndex:1000}}>
-                                <thead>
-                                <tr>
-                                    <th>NOMBRE</th>
-                                    <th>PUNTUACIÓN</th>
-                                </tr>
-                                </thead>
-                            <tbody>
-                            {this.state.ranking.map((score, index)=>{
-                                return(
-                                    <tr>
-                                        <td key={shortId.generate()}>{score.name}</td>
-                                        <td key={shortId.generate()}>{Object.values(score)[1]}</td>
-                                    </tr>
-                                )
-                            })}
-                            <button color="primary" onClick={this.toggle}>Close</button>     
-                            </tbody>
-                        </table>}
-                    </ModalBody>
-             </Modal>    
-        </div>
-    )}
-}
-
-export default Ranking;*/
-
-const Ranking=({game_score})=>{
+import { MyContext } from '../../context/MyProvider';
+import LogIn from '../Access/LogIn';
+const Ranking=({gameName, scoreState})=>{
     const [ranking, setRanking]= useState()
     const [modal, setModal] = useState(true);
-
+    const [closeAll, setCloseAll] = useState(true);
+    const { state, logIn } = React.useContext(MyContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/ranking/${game_score}`)
+        fetch(`http://localhost:5000/ranking/${gameName}`)
             .then(res => res.json())
             .then(data => setRanking([...data]))
-
-           
+        if(state.user.results !== undefined){
+            //save score in ddbb
+        }else{
+            //save score in context
+        }
     },[])
-
     const toggle = () => setModal(!modal);
-
-    
-    console.log(ranking)
+    console.log(state.user)
     return(
-        <Fragment>
+        <div className="modal">
              <Modal isOpen={modal} toggle={toggle} >
                  <ModalBody>
                         {ranking &&
+                        <div>
                             <table style={{color:'black', zIndex:1000}}>
                                 <thead>
                                 <tr>
@@ -92,17 +41,28 @@ const Ranking=({game_score})=>{
                             {ranking.map((score, index)=>{
                                 return(
                                     <tr>
-                                        <td key={shortId.generate()}>{score.name}</td>
+                                        <td key={shortId.generate()}>{index + 1} {score.name}</td>
                                         <td key={shortId.generate()}>{Object.values(score)[1]}</td>
                                     </tr>
                                 )
                             })}
-                            <Button color="primary" onClick={toggle}>Close</Button>     
+                            <Button color="primary" onClick={toggle}>Close</Button>
                             </tbody>
-                        </table>}
+                        </table>
+                        {state.user.results === undefined
+                        ?
+                        <div>
+                            <p>Tu puntuación final es {scoreState}. Para que tus puntuaciones se guarden y puedas competir con otros usuarios registrate <Link to='Access'>aquí</Link></p>
+                        </div>
+                        :
+                        <div>
+
+                            <p>Estas en la posición X del ranking</p>
+                        </div>}
+                        </div>}
                     </ModalBody>
-             </Modal>    
-        </Fragment>
+             </Modal>
+        </div>
     )
 }
 export default Ranking;

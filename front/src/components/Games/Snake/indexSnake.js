@@ -23,6 +23,7 @@ const getRandomCoordinates = () => {
 const initialState = {
   gameStarted: false,
   gameEnded: true,
+  ranking: false,
   food: getRandomCoordinates(),
   points: 0,
   speed: 200,
@@ -171,10 +172,21 @@ class IndexSnake extends Component {
    }  */
   onGameOver() {
     clearInterval(this.state.interval)
-    if(this.context.state.user.results[0].user_id){
+    if(this.context.state.user.results !== undefined){
         SaveScore(this.state.points, this.context.state.user.results[0].user_id, "snake_score")
-    } 
-    this.setState(initialState)
+    }
+    this.setState({
+      gameStarted: false,
+      gameEnded: true,
+      ranking: true,
+      food: getRandomCoordinates(),
+      speed: 200,
+      direction: 'RIGHT',
+      snakeDots: [
+        [0, 0],
+        [2, 0]
+      ],
+    })
 
   }
   render() {
@@ -187,40 +199,42 @@ class IndexSnake extends Component {
         <CloseButton />
         <h1 style={{ color: 'lightgrey', paddingTop: '15px', marginBottom: '15px' }}>Juega al SNAKE</h1>
           <p className="">Points: {this.state.points}</p>
-
-
-        <div className="snakeGameContainer">
-        {this.state.points >= 0 && this.state.gameStarted != true ?
-        <Ranking  game_score="snake_score"/> 
-           : null }
-        {this.state.gameStarted != true
-        ?
-        <div id="buttonContainer">
-          <button id="startSnakeButtonIframe" onClick={this.onClickStart}>
-            <p>Juega al SNAKE!</p>
-          </button>
-          <button id="startSnakeButton" onClick={this.onClickStart}>PLAY!</button>
-        </div>
-        :  null
-
-        } 
-        <div className="game-area">
-          <Snake snakeDots={this.state.snakeDots}/>
-          <Food dot={this.state.food}/>
-        </div>
-
-          <div className="SnakeDirectionsMobilePad">
-            <button className="padButton" value='UP' onClick={this.checkButtonsDirections}>U</button>
-            <div id="sidesArrowsRow">
-              <button className="padButton" value='LEFT' onClick={this.checkButtonsDirections}>L</button>
-              <button className="padButton" value='RIGHT' onClick={this.checkButtonsDirections}>R</button>
-            </div>
-            <button id="downButton" className="padButton" value='DOWN' onClick={this.checkButtonsDirections}>D</button>
+          <div className="snakeGameContainer">
+          {this.state.ranking &&
+            <Ranking gameName="snake_score" scoreState={this.state.points}/>
+          }
+          {this.state.gameStarted != true
+          ?
+          <div id="buttonContainer">
+            <button id="startSnakeButtonIframe" onClick={this.onClickStart}>
+              <p>Juega al SNAKE!</p>
+            </button>
+            <button id="startSnakeButton" onClick={this.onClickStart}>PLAY!</button>
           </div>
+          : null
+          }
+          <div className="game-area">
+            <Snake snakeDots={this.state.snakeDots}/>
+            <Food dot={this.state.food}/>
+          </div>
+
+            <div className="SnakeDirectionsMobilePad">
+              <button className="padButton" value='UP' onClick={this.checkButtonsDirections}>U</button>
+              <div id="sidesArrowsRow">
+                <button className="padButton" value='LEFT' onClick={this.checkButtonsDirections}>L</button>
+                <button className="padButton" value='RIGHT' onClick={this.checkButtonsDirections}>R</button>
+              </div>
+              <button id="downButton" className="padButton" value='DOWN' onClick={this.checkButtonsDirections}>D</button>
+            </div>
+
+          </div>
+          <img className="backgroundSmallLeft" src={backgroundSmall} />
+          <img className="backgroundSmallRight" src={backgroundSmall} />
+
         </div>
-        <img className="backgroundSmallLeft" src={backgroundSmall} />
-        <img className="backgroundSmallRight" src={backgroundSmall} />
-      </div>
+
+
+
     );
   }
 }
