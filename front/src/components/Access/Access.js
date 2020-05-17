@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Access.scss';
-import SignIn from './SignIn';
+import SignUp from './Signup';
 import LogIn from './LogIn';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -24,7 +24,7 @@ function Access() {
     let renderSwitch = () => {
         switch (menuItemSelected) {
             case 'SignIn':
-                return (<SignIn />)
+                return (<SignUp />)
             case 'LogIn':
                 return (<LogIn />)
         }
@@ -40,7 +40,7 @@ function Access() {
                         <div className="col-12" className={classes.root}>
                             <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
                                 <Button onClick={() => setMenuItemSelected('LogIn')}>Iniciar sesión</Button>
-                                <Button onClick={() => setMenuItemSelected('SignIn')}>Registrarme</Button>
+                                <Button onClick={() => setMenuItemSelected('SignUp')}>Registrarme</Button>
                             </ButtonGroup>
                         </div>
                         <div className="col-12 formDisplay">

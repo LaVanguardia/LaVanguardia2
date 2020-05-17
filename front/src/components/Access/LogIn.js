@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Redirect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -33,6 +33,7 @@ function LogIn() {
 
   //submit button
   const submitInfo = (event) => {
+
     event.preventDefault();
 
     //all i put in the form goes to this route
@@ -49,6 +50,11 @@ function LogIn() {
       .then(data => logIn(data))
   }
 
+  const { state } = React.useContext(MyContext)
+
+
+
+
   return (
     <div className="SignIn">
       <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => submitInfo(event)}>
@@ -63,7 +69,8 @@ function LogIn() {
               value={data.password}
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
-          < div className = "col-12 aligItems" >
+          <div className="col-12 aligItems" >
+          {state.user.results == undefined &&
             <Button
               type="submit"
               variant="contained"
@@ -73,9 +80,23 @@ function LogIn() {
             >
               Log In
             </Button>
-            <Link to='games-section' >
-          <button className='center-button'> MÁS JUEGOS </button>
-      </Link>
+          }
+          {state.user.results != []
+          && <Link to="games-section">
+              <Button
+                type="submit"
+                variant="contained"
+                color="warning"
+                className={classes.button}
+                endIcon={sendIcon}
+              >
+                Ready To Access Games
+              </Button>
+            </Link>
+          }
+          
+        
+        
           </div>
         </div>
       </form>

@@ -53,7 +53,6 @@ const Navbar = () => {
   };
 
   const { state } = React.useContext(MyContext)
-  const { props } = React.useContext(MyContext)
 
 
     return (
@@ -84,11 +83,10 @@ const Navbar = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-      {console.log(state.user.results)}
      {state.user.results == undefined
       ? <Fragment>
           <StyledMenuItem>
-            <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none'}}>
+            <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
               <ListItemIcon>
                 <SendIcon fontSize="small" />
               </ListItemIcon>
@@ -106,10 +104,12 @@ const Navbar = () => {
           </StyledMenuItem>
         
           <StyledMenuItem>
+          <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
             <ListItemIcon>
               <InboxIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary="Desconectar" />
+            </a>
           </StyledMenuItem>
         </Fragment>
      }
