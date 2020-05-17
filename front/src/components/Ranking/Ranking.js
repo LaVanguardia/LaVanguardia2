@@ -42,7 +42,7 @@ const Ranking=({gameName, scoreState})=>{
                             {ranking.map((score, index)=>{
                                 return(
                                     <tr>
-                                        <td key={shortId.generate()}>{score.name}</td>
+                                        <td key={shortId.generate()}>{index + 1} {score.name}</td>
                                         <td key={shortId.generate()}>{Object.values(score)[1]}</td>
                                     </tr>
                                 )
