@@ -7,31 +7,22 @@ import {
 import './Ranking.css';
 import { MyContext } from '../../context/MyProvider';
 import LogIn from '../Access/LogIn';
-
-
 const Ranking=({gameName, scoreState})=>{
     const [ranking, setRanking]= useState()
     const [modal, setModal] = useState(true);
     const [closeAll, setCloseAll] = useState(true);
     const { state, logIn } = React.useContext(MyContext)
-
     useEffect(()=>{
         fetch(`http://localhost:5000/ranking/${gameName}`)
             .then(res => res.json())
             .then(data => setRanking([...data]))
-
         if(state.user.results !== undefined){
-            //save score in ddbb 
+            //save score in ddbb
         }else{
             //save score in context
-           // LogIn( 0 , scoreState, gameName)
         }
-           
     },[])
-
     const toggle = () => setModal(!modal);
-
-    
     console.log(state.user)
     return(
         <Fragment>
@@ -55,22 +46,21 @@ const Ranking=({gameName, scoreState})=>{
                                     </tr>
                                 )
                             })}
-                            <Button color="primary" onClick={toggle}>Close</Button>     
+                            <Button color="primary" onClick={toggle}>Close</Button>
                             </tbody>
                         </table>
                         {state.user.results === undefined
                         ?
                         <div>
-                            <p>Tu puntuación final es {scoreState}. Si quieres guardarla, registrate<Link to='Access'>aquí</Link></p>
+                            <p>Tu puntuación final es {scoreState}. Para que tus puntuaciones se guarden y puedas competir con otros usuarios registrate <Link to='Access'>aquí</Link></p>
                         </div>
-                        : 
+                        :
                         <div>
-                            <p>dssdsd</p>
+                            <p>Estas en la posición X del ranking</p>
                         </div>}
                         </div>}
-
                     </ModalBody>
-             </Modal>    
+             </Modal>
         </Fragment>
     )
 }
