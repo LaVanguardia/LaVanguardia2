@@ -1,0 +1,64 @@
+.PersonalRanking {
+    & .col {
+        margin: 0;
+    }
+
+    & .justifyCenter {
+        display: flex;
+        justify-content: center;
+    }
+
+    & .records {
+        padding: 0 1rem;
+
+        & .textRecords {
+            border-bottom: 1px solid gray;
+            text-align: start;
+            margin: 1rem 0;
+        }
+
+        & .columnPodium {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            & .gameImage img {
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            & .podium img {
+                width: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+
+    & .yourGames {
+
+        & .textYourGames {
+            border-bottom: 1px solid gray;
+            text-align: start;
+            margin: 1rem 0 0 1rem;
+        }
+
+        & .yourPoints {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            & .points {
+                color: white;
+                background-color: rgb(6, 6, 46);
+                padding: 5px 9px;
+                border-radius: 20px;
+            }
+        }
+        & .cardGames{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+}
