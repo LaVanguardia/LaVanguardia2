@@ -93,8 +93,8 @@ function LogIn() {
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
           <div className="col-12 aligItems" >
-          {state.user.results == undefined &&
-            <Button
+          {state.user.results == undefined
+            ? <Button
               type="submit"
               variant="contained"
               color="primary"
@@ -103,10 +103,8 @@ function LogIn() {
             >
               Log In
             </Button>
-          }
-          {state.user.results != []
-          && <Link to="games-section">
-              <button
+          : <Link to="games-section">
+              <Button
                 type="submit"
                 variant="contained"
                 color="warning"
@@ -114,7 +112,7 @@ function LogIn() {
                 endIcon={sendIcon}
               >
                 Ready To Access Games
-              </button>
+              </Button>
           </Link>
           }
           
