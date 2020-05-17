@@ -20,6 +20,7 @@ const Ranking=({gameName, scoreState})=>{
             //save score in ddbb
         }else{
             //save score in context
+
         }
     },[])
     const toggle = () => setModal(!modal);
@@ -56,6 +57,7 @@ const Ranking=({gameName, scoreState})=>{
                         </div>
                         :
                         <div>
+
                             <p>Estas en la posición X del ranking</p>
                         </div>}
                         </div>}
