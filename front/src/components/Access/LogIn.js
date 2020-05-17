@@ -76,9 +76,6 @@ function LogIn() {
   },[data]) */
 
 
-  const { state } = React.useContext(MyContext)
-
-
 
 
   return (
@@ -109,7 +106,7 @@ function LogIn() {
           }
           {state.user.results != []
           && <Link to="games-section">
-              <Button
+              <button
                 type="submit"
                 variant="contained"
                 color="warning"
@@ -117,8 +114,8 @@ function LogIn() {
                 endIcon={sendIcon}
               >
                 Ready To Access Games
-              </Button>
-            </Link>
+              </button>
+          </Link>
           }
           
         
