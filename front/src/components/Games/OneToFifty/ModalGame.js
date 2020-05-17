@@ -3,13 +3,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
 import { MyContext } from '../../../context/MyProvider';
 import { useEffect } from 'react';
+import {Link} from 'react-router-dom';
 
 const ModalGame = (props) => {
 
   const { state, logIn } = React.useContext(MyContext)
 
 
-  const [modal, setModal] = useState(props.modalState);
+  const [modal, setModal] = useState(true);
   const [score, setScore] = useState(0);
 
   let time = (props.actualTime);
@@ -63,7 +64,7 @@ const ModalGame = (props) => {
           <p>Tu tiempo es de &nbsp; &nbsp;<span style={{ fontWeight: "bold", fontSize: "x-large" }}>{props.actualTime}</span></p>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => window.location.reload()}>Restart</Button>{' '}
+            <Button color="primary" onClick={()=> setModal(!modal)}>Cerrar</Button>{' '}
         </ModalFooter>
       </Modal>
     </div>

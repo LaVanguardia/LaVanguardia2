@@ -1,0 +1,31 @@
+.MyCardGame {
+    border: 1px solid rgb(3, 3, 37);
+    margin: 10px 5px;
+    padding: 0;
+
+    & .imgGame{
+        margin: 0;
+        & img {
+            width: 100%;
+        }
+    }
+    & .dateAndScore{
+        margin:  10px 0;
+        & div{
+            padding: 0;
+        }
+    }
+
+    & .justifyCenter {
+        display: flex;
+        justify-content: center;
+
+        & .buttonPlay {
+            color: white;
+            background-color: rgb(3, 3, 37);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+    }
+
+}

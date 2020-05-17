@@ -10,7 +10,6 @@ const Chrono = (props) => {
     const [currentTimeMs, setCurrentTimeMs] = useState(0);
     //Modal
     let [modal, setModal] = useState(false);
-    
 
     useEffect(() => {
         setStartTime(new Date());
@@ -43,7 +42,7 @@ const Chrono = (props) => {
         currentTimeMs !== 0 && 
         <div className="col-12 col-md-6">
             <div className="row justifyCenter">
-                {modal === true && <ModalGame actualTime={`${convertMS(currentTimeMs-startTime)}`} modalState={modal}/>}
+                {modal === true && <ModalGame actualTime={`${convertMS(currentTimeMs-startTime)}`}  />}
                 <p> {
                 `${convertMS(currentTimeMs-startTime)}`
                 } </p>
