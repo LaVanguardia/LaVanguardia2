@@ -206,7 +206,7 @@ export default class BigBoard extends React.Component {
                                   <br/><p className="changeTeamLink" onClick={this.changeTeam}>cambiar de equipo
                                        </p>
                                 </button>
-                                <Ranking gameName="football_score"/>
+                                <Ranking gameName="football_score" scoreState={this.state.counter}/>
                                 
 
                               </div>
