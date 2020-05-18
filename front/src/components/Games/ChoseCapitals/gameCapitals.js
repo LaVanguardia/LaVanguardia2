@@ -50,8 +50,8 @@ export default class GameCapitals extends Component {
             //prepare the counter
             if (this.state.seconds <= 0) {
                 //when it's finished
-                this.context.state.user.results
-                   ? SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
+                this.context.state.user.results == [] || this.context.state.user.results == 'undefined' 
+                ? SaveScore(this.state.score, this.context.state.user.results[0].user_id, "city_score")
                    :  DisplayRanking()
 
                 
