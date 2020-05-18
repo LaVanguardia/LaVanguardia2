@@ -32,7 +32,7 @@ const Ranking=({gameName, scoreState})=>{
                         <div>
                             <table style={{color:'black', zIndex:1000}}>
                                 <thead>
-                                <tr>
+                                <tr className="modal-titles">
                                     <th>NOMBRE</th>
                                     <th>PUNTUACIÓN</th>
                                 </tr>
