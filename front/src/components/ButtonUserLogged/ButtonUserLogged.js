@@ -7,7 +7,7 @@ const ButtonUserLogged =(props)=>{
             <button
                 onClick={props.userHere}
                 className="buttonLog">
-                Log In
+                Logearse
             </button>
 
             : <button
