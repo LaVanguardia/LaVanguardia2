@@ -33,21 +33,9 @@ const Ranking=({gameName, scoreState})=>{
                  <Button color="primary" onClick={toggle}>Close</Button>
                  <h2>Ganadores</h2>
                         {ranking &&
-<<<<<<< HEAD
-                        <div>
-                            <table style={{color:'black', zIndex:1000}}>
-                                <thead>
-                                <tr className="modal-titles">
-                                    <th>NOMBRE</th>
-                                    <th>PUNTUACIÓN</th>
-                                </tr>
-                                </thead>
-                            <tbody>
-=======
                         <div style={{color:'black', zIndex:1000, align: 'center'}}>
 
                             <table style={{display: 'flex',  justifyContent:'space-evenly'}}>
->>>>>>> f3b71eb7c3cafe652f5b057124ee2a7551ac31a7
                             {ranking.map((score, index)=>{
                                 return(
                                     <div style={{backgroundColor: backgroundColors[index], padding: '10px;', width:'100px', height:'100px'}}>
