@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express'),
 //información que tu le mandas por un formulario
       bodyParser = require('body-parser'),
