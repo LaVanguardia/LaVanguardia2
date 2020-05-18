@@ -19,6 +19,40 @@ const PersonalRanking = () => {
 
     const [points, setPoints] = useState(25563);
 
+    //Fetch para conseguir todas las puntuaciones
+    const [allScores, setAllScores]= useState({
+        Nonogram: 200,
+        OneToFifty: 100,
+        CityPlay: 50,
+        Memory: 0,
+        Snake: 90,
+        Tickle: 16,
+        Geochallenge: 0
+    })
+
+    //Ordenamos los juegos de mayor a menor puntuacion
+    const allScoresSorted = (Object.keys(allScores).sort(function (a, b) { return allScores[a] - allScores[b] })).reverse()
+
+    //Switch paramostrar las imagenes correspondientes en el podium
+    const displayGameImg=(juego)=>{
+        switch(juego){
+            case 'Nonogram':
+               return Nonogram;
+            case 'OneToFifty':
+                return OneToFifty;
+            case 'CityPlay':
+                return CityPlay;
+            case 'Memory':
+                return Memory;
+            case 'Snake':
+                return Snake;
+            case 'Tickle':
+                return Tickle;
+            default:
+                return Geochallenge;
+        }
+    }
+
     return (
         < div className="PersonalRanking">
             <div className="row records">
@@ -29,7 +63,7 @@ const PersonalRanking = () => {
                     <div className="row justifyCenter">
                         <div className="col-4 col-md-2 columnPodium">
                             <div className="gameImage">
-                                <img src={OneToFifty} alt="thirdPodium" />
+                                <img src={displayGameImg(allScoresSorted[2])} alt="thirdPodium" />
                             </div>
                             <div className="podium">
                                 <img src={thirdPodium} alt="thirdPodium" />
@@ -37,7 +71,7 @@ const PersonalRanking = () => {
                         </div>
                         <div className="col-4 col-md-2 columnPodium">
                             <div className="gameImage">
-                                <img src={Geochallenge} alt="firstPodium" />
+                                <img src={displayGameImg(allScoresSorted[0])} alt="firstPodium" />
                             </div>
                             <div className="podium">
                                 <img src={firstPodium} alt="firstPodium" />
@@ -45,7 +79,7 @@ const PersonalRanking = () => {
                         </div>
                         <div className="col-4 col-md-2 columnPodium">
                             <div className="gameImage">
-                                <img src={Snake} alt="secondPodium" />
+                                <img src={displayGameImg(allScoresSorted[1])} alt="secondPodium" />
                             </div>
                             <div className="podium">
                                 <img src={secondPodium} alt="secondPodium" />
@@ -66,13 +100,13 @@ const PersonalRanking = () => {
                     </div>
                 </div>
                 <div className="row cardGames">
-                    <MyCardGame gameName={'Nonogram'} imgGame={Nonogram} record={200} date={'dd/mm/yy'} linkToPlay={'/nonogram'}/>
-                    <MyCardGame gameName={'OneToFifty'} imgGame={OneToFifty} record={40} date={'dd/mm/yy'} linkToPlay={'/OneToFifty'}/>
-                    <MyCardGame gameName={'CityPlay'} imgGame={CityPlay} record={0} date={'dd/mm/yy'} linkToPlay={'/cityplay'}/>
-                    <MyCardGame gameName={'Memory'} imgGame={Memory} record={0} date={'dd/mm/yy'} linkToPlay={'/MemoryGame'}/>
-                    <MyCardGame gameName={'Snake'} imgGame={Snake} record={52} date={'dd/mm/yy'} linkToPlay={'/snake'}/>
-                    <MyCardGame gameName={'Tickle'} imgGame={Tickle} record={100} date={'dd/mm/yy'} linkToPlay={'/tacleclick'}/>
-                    <MyCardGame gameName={'Geochallenge'} imgGame={Geochallenge} record={90} date={'dd/mm/yy'} linkToPlay={'/geochallenge'}/>
+                    <MyCardGame gameName={'Nonogram'} imgGame={Nonogram} record={allScores.Nonogram} date={'dd/mm/yy'} linkToPlay={'/nonogram'}/>
+                    <MyCardGame gameName={'OneToFifty'} imgGame={OneToFifty} record={allScores.OneToFifty} date={'dd/mm/yy'} linkToPlay={'/OneToFifty'}/>
+                    <MyCardGame gameName={'CityPlay'} imgGame={CityPlay} record={allScores.CityPlay} date={'dd/mm/yy'} linkToPlay={'/cityplay'}/>
+                    <MyCardGame gameName={'Memory'} imgGame={Memory} record={allScores.Memory} date={'dd/mm/yy'} linkToPlay={'/MemoryGame'}/>
+                    <MyCardGame gameName={'Snake'} imgGame={Snake} record={allScores.Snake} date={'dd/mm/yy'} linkToPlay={'/snake'}/>
+                    <MyCardGame gameName={'Tickle'} imgGame={Tickle} record={allScores.Tickle} date={'dd/mm/yy'} linkToPlay={'/tacleclick'}/>
+                    <MyCardGame gameName={'Geochallenge'} imgGame={Geochallenge} record={allScores.Geochallenge} date={'dd/mm/yy'} linkToPlay={'/geochallenge'}/>
                 </div>
             </div>
         </div>
