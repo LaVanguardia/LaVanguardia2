@@ -8,8 +8,13 @@ import './Button.css';
 import backgroundFootball from './images/FOOTBAL-03@2x.png'
 import gameTitle from './images/gameTitle.png'
 import InstructionGames from '../../SharedButtons/InstructionGames';
-import CloseButton from '../../SharedButtons/CloseButton'
-import './../../SharedButtons/iframeButtons'
+import CloseButton from '../../SharedButtons/CloseButton';
+import './../../SharedButtons/iframeButtons';
+import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
+import { MyContext } from '../../../context/MyProvider';
+import Ranking from '../../Ranking/Ranking'
+
+
 
 
 const initialState = () => {
@@ -31,6 +36,7 @@ const initialState = () => {
 }
 
 export default class BigBoard extends React.Component {
+  static contextType = MyContext
   state = initialState()
   delay = 2000;
   timer = () => {setTimeout(this.onEndTimer, this.delay)}
@@ -77,13 +83,20 @@ export default class BigBoard extends React.Component {
         logoClassName: "logoDisplayed",
         counter: this.state.counter + 1
       })
+
       // HERE THE DELAY BECOMES SHORTER
       this.delay = this.delay - 50;
       this.onClickStart()
     } else {
+      console.log('puntoooooos  :'  + this.state.counter)
+
+      if(this.context.state.user.results !== undefined){
+        SaveScore(this.state.counter, this.context.state.user.results[0].user_id, "football_score")
+      }
       this.setState({
         gameEnded: true
       })
+
     }
     clearTimeout(this.timer);
   }
@@ -128,7 +141,7 @@ export default class BigBoard extends React.Component {
   render() {
     return (
       <Fragment>
-        <InstructionGames instructionText = "Machaca al equipo que más rábia te dé! Selecciona un equipo y pega encima de su escudo para sumar puntos, cuidado, si te equivocas pierdes." / >
+        <InstructionGames instructionText = "Machaca al equipo que más rábia te dé! Selecciona un equipo y pega encima de su escudo para sumar puntos, cuidado, si te equivocas pierdes." />
         <CloseButton/>
         <div id="superFootballBackground" >
           <img className='gameTitle' src={gameTitle} alt='title'></img>
@@ -195,6 +208,8 @@ export default class BigBoard extends React.Component {
                                   <br/><p className="changeTeamLink" onClick={this.changeTeam}>cambiar de equipo
                                        </p>
                                 </button>
+                                <Ranking gameName="football_score"/>
+
 
                               </div>
 

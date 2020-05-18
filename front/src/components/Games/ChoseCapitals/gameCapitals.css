@@ -7,6 +7,21 @@
     position: relative;
 }
 
+.invitationToLoginContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80vh;
+}
+
+.invitationToLoginButton {
+    height: 200px;
+    width: 200px;
+    background-color: orangered;
+    color: white;
+    border-radius: 15px;
+}
+
 .backgroundCity{
     opacity: 0.5;
     position: absolute;

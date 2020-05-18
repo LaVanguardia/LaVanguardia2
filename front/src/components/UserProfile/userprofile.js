@@ -2,15 +2,23 @@ import React, { useState } from 'react';
 import './userprofile.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { MyContext } from '../../context/MyProvider';
 
 
-function UserProfile(props) {
+// function UserProfile(props) {
+  function UserProfile() {
+
+  const { state } = React.useContext(MyContext)
   const [show, setShow] = useState(false);
-   const handleClose = () => setShow(false);
-   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const userData = state.user.results
+  console.log(userData)
+
   return (
       <div>
-      {props.userprof.name &&
+      {/* {props.userprof.name && */}
+      {userData &&
         <div>
         <Button bsPrefix="buttonModal" onClick={handleShow}>
           Mi Perfil
@@ -22,10 +30,15 @@ function UserProfile(props) {
             </Modal.Header>
             <Modal.Body>
               <div className="centerDiv">
-                <img className='avatar mt-3' src={props.userprof.img} alt='' />
-                <h3 className='textuser mt-3'>Nombre: {props.userprof.name}</h3>
+                {/* <img className='avatar mt-3' src={props.userprof.img} alt='' /> */}
+                {/* <h3 className='textuser mt-3'>Nombre: {props.userprof.name}</h3>
                 <p className='textuser'>Nombre de Usuario: {props.userprof.username}</p>
-                <p className='textuser'>Puntuación: {props.userprof.points}</p>
+                <p className='textuser'>Puntuación: {props.userprof.points}</p> */}
+                <img className='avatar mt-3' src='' alt='' />
+                <h3 className='textuser mt-3'>Nombre: {userData.email}</h3>
+                <p className='textuser'>Nombre de Usuario: {userData.password}</p>
+                <p className='textuser'>Puntuación: {userData.geoscore}</p>
+                
               </div>
 
             </Modal.Body>

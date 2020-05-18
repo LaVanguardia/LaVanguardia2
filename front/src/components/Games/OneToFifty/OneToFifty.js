@@ -23,10 +23,16 @@ export default function OneToFifty() {
         numbers.push(i);
         styleNumbers.push(0);
     }
-    //Fill all numbers
-    useEffect(() => {
+
+    const startGame = () => {
         setallNumbers(numbers);
         setstyle(styleNumbers);
+        setCurrentNumber(1);
+        setTimeStart(false);
+    }
+    //Fill all numbers
+    useEffect(() => {
+        startGame();
     }, [])
 
     //Fill the first half array and the second half array
@@ -62,14 +68,20 @@ export default function OneToFifty() {
     return (
         <div className="OneToFifty container-fluid">
             <div className="row rowIcons">
-                <div><InstructionOneToFifty/></div>
-                <div><CloseButtonOneToFifty/></div>
+                <div><InstructionOneToFifty /></div>
+                <div><CloseButtonOneToFifty /></div>
             </div>
             <div className="OneToFiftyContent">
                 {/* MENU */}
                 <div className="row timeAndActualNumber alignCenter">
                     <div className="col-12 col-md-6 justifyCenter">
-                        <p className="chronoText">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
+                        <p className="chronoText" >
+                            {
+                                timeStart === false
+                                    ? '00:00:00'
+                                    : <Chrono currentNumber={currentNumber} />
+                            }
+                        </p>
                     </div>
                     <div className="col-12 col-md-6 justifyCenter">
                         <p>Siguiente numero: &nbsp;&nbsp;&nbsp; <span style={{ fontWeight: "bold", fontSize: "x-large" }}>{currentNumber}</span></p>
@@ -84,16 +96,16 @@ export default function OneToFifty() {
                             </div>)
                     }
                 </div>
-                <button className="restartButton" onClick={() => window.location.reload()}>RESTART</button>
+                <button className="restartButton" onClick={() => startGame()}>RESTART</button>
                 <div>
                     {/* JUST TO IFRAME */}
                     <div className="iframeOneToFifty">
                         <div className="row timeAndActualNumberIframe alignCenter">
                             <div className="col-6 justifyCenter">
-                                <p className="chronoText">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
+                                <p className="chronoText ">{timeStart === false ? '00:00:00' : <Chrono currentNumber={currentNumber} />}</p>
                             </div>
                             <div className="col-6 justifyCenter">
-                                <button className="restartButtonIframe" onClick={() => window.location.reload()}>RESTART</button>
+                                <button className="restartButtonIframe" onClick={() => startGame()}>RESTART</button>
                             </div>
                         </div>
                     </div>
