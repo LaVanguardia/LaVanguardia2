@@ -64,6 +64,7 @@ export default function NonogramApp() {
     setLevel(item);
     changeSolutionUser({ grid: Array(item).fill(0).map(x => Array(item).fill(0)) });
     changeSolutionGame({ grid: Array(item).fill(0).map(x => Array(item).fill(0).map(e => Math.round(Math.random()))) });
+    setModal(false)
   }
 
   //We change the value of SolutionGame, making random values 0 / 1
@@ -88,7 +89,9 @@ export default function NonogramApp() {
     if (JSON.stringify(solutionGame.grid) === JSON.stringify(solutionUserWithout2)) {
       //Calculate score
       setScore(level*5);
-      SaveScore(score, context.state.user.results[0].user_id, "nonogram_score")
+      if(context.state.user.results !== undefined){
+          SaveScore(score, context.state.user.results[0].user_id, "nonogram_score")
+      }
       // changeWinGame(true);
       setModal(!modal)
       confetti.start()

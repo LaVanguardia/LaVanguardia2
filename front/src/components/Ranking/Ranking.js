@@ -34,7 +34,7 @@ const Ranking=({gameName, scoreState})=>{
                  <h2>Ganadores</h2>
                         {ranking &&
                         <div style={{color:'black', zIndex:1000, align: 'center'}}>
-                        
+
                             <table style={{display: 'flex',  justifyContent:'space-evenly'}}>
                             {ranking.map((score, index)=>{
                                 return(
@@ -50,7 +50,7 @@ const Ranking=({gameName, scoreState})=>{
                         {state.user.results === undefined
                         ?
                         <div>
-                            <h2>{scoreState} puntos ! <br/> Guarda tus puntos, <br/> Reta a tu amigos <br/>...</h2> 
+                            <h2>{scoreState} puntos ! <br/> Guarda tus puntos, <br/> Reta a tu amigos <br/>...</h2>
                                 <Link to='Access'>
                                 <Button style={{color: 'white', height: '100px', fontWeight: 'bolder'}}>REGISTRARSE</Button>
                                 </Link>

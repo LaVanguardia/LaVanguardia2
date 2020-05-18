@@ -88,8 +88,11 @@ export default class BigBoard extends React.Component {
       this.delay = this.delay - 50;
       this.onClickStart()
     } else {
-      this.context.state.user.results == [] || this.context.state.user.results == 'undefined' &&
-      SaveScore(this.state.counter, this.context.state.user.results[0].user_id, "football_score")
+      console.log('puntoooooos  :'  + this.state.counter)
+
+      if(this.context.state.user.results !== undefined){
+        SaveScore(this.state.counter, this.context.state.user.results[0].user_id, "football_score")
+      }
       this.setState({
         gameEnded: true
       })
@@ -206,7 +209,7 @@ export default class BigBoard extends React.Component {
                                        </p>
                                 </button>
                                 <Ranking gameName="football_score"/>
-                                
+
 
                               </div>
 
