@@ -97,10 +97,12 @@ const Navbar = () => {
 
         :  <Fragment>
           <StyledMenuItem>
+          <a className='loginButton' href="/PersonalRanking" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
             <ListItemIcon>
               <DraftsIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary="Mi perfil" />
+            </a>
           </StyledMenuItem>
         
           <StyledMenuItem>
