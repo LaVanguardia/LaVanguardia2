@@ -14,7 +14,7 @@ var cors = require('cors')
 app.use(cors())
 
 // 1 CATCH THE SECRET KEY TO ALLOW THE APP TO START
-  app.set('secret_key', password.secret_key);
+app.set('secret_key', password.secret_key);
 // 2 WE SET THE BODYPARSER TO BE ABLE TO CATCH THE INFOS COMING FROM THE FRONT
 app.use(bodyParser.urlencoded({ extended: false }));
 // 3 WE CONVERT INTO JSON FORMAT

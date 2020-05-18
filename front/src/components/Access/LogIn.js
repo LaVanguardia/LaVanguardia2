@@ -103,15 +103,14 @@ function LogIn() {
             >
               Log In
             </Button>
-          : <Link to="games-section">
+          : <Link to="games-section" id="game-access">
               <Button
                 type="submit"
                 variant="contained"
                 color="warning"
-                className={classes.button}
                 endIcon={sendIcon}
               >
-                Ready To Access Games
+                ACCEDER A LOS JUEGOS
               </Button>
           </Link>
           }

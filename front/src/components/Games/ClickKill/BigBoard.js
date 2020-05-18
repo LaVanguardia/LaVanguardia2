@@ -89,8 +89,10 @@ export default class BigBoard extends React.Component {
       this.onClickStart()
     } else {
       console.log('puntoooooos  :'  + this.state.counter)
-      this.context.state.user.results == [] || this.context.state.user.results == 'undefined' &&
-      SaveScore(this.state.counter, this.context.state.user.results[0].user_id, "football_score")
+
+      if(this.context.state.user.results !== undefined){
+        SaveScore(this.state.counter, this.context.state.user.results[0].user_id, "football_score")
+      }
       this.setState({
         gameEnded: true
       })
@@ -206,8 +208,8 @@ export default class BigBoard extends React.Component {
                                   <br/><p className="changeTeamLink" onClick={this.changeTeam}>cambiar de equipo
                                        </p>
                                 </button>
-                                <Ranking gameName="football_score" scoreState={this.state.counter}/>
-                                
+                                <Ranking gameName="football_score"/>
+
 
                               </div>
 
