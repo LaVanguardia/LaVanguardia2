@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, Redirect, UseEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -9,7 +9,7 @@ import { MyContext } from '../../context/MyProvider';
 import {Link} from 'react-router-dom';
 import SaveScore from '../../sheredFunctions/SheredFunctions'
 
-const sendIcon = <FontAwesomeIcon icon={faPaperPlane} size='2x' color='white'/>
+const sendIcon = <FontAwesomeIcon icon={faPaperPlane} size='2x' color='white' />
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +34,7 @@ function LogIn() {
 
   //submit button
   const submitInfo = (event) => {
+
     event.preventDefault();
 
     //all i put in the form goes to this route
@@ -43,8 +44,8 @@ function LogIn() {
         'Content-Type': 'application/json'
       }),
       body: JSON.stringify({
-        email:data.email, 
-        password:data.password
+        email: data.email,
+        password: data.password
       })
     }).then(res => res.json())
       .then(data => logIn(data))
@@ -75,6 +76,8 @@ function LogIn() {
   },[data]) */
 
 
+
+
   return (
     <div className="SignIn">
       <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => submitInfo(event)}>
@@ -89,8 +92,9 @@ function LogIn() {
               value={data.password}
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
-          < div className = "col-12 aligItems" >
-            <Button
+          <div className="col-12 aligItems" >
+          {state.user.results == undefined
+            ? <Button
               type="submit"
               variant="contained"
               color="primary"
@@ -99,9 +103,21 @@ function LogIn() {
             >
               Log In
             </Button>
-            <Link to='games-section' >
-          <button className='center-button'> MÁS JUEGOS </button>
-      </Link>
+          : <Link to="games-section">
+              <Button
+                type="submit"
+                variant="contained"
+                color="warning"
+                className={classes.button}
+                endIcon={sendIcon}
+              >
+                Ready To Access Games
+              </Button>
+          </Link>
+          }
+          
+        
+        
           </div>
         </div>
       </form>

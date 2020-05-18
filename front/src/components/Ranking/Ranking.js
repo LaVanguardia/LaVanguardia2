@@ -7,72 +7,63 @@ import {
 import './Ranking.css';
 import { MyContext } from '../../context/MyProvider';
 import LogIn from '../Access/LogIn';
-
-
 const Ranking=({gameName, scoreState})=>{
     const [ranking, setRanking]= useState()
     const [modal, setModal] = useState(true);
     const [closeAll, setCloseAll] = useState(true);
     const { state, logIn } = React.useContext(MyContext)
-
     useEffect(()=>{
         fetch(`http://localhost:5000/ranking/${gameName}`)
             .then(res => res.json())
             .then(data => setRanking([...data]))
-
         if(state.user.results !== undefined){
-            //save score in ddbb 
+            //save score in ddbb
         }else{
             //save score in context
-           
         }
-           
     },[])
-
+    const backgroundColors = ['#CCA43D', '#C0C0C0', '#7F3F00']
     const toggle = () => setModal(!modal);
-
-    
+    const fontSize = 30;
     console.log(state.user)
     return(
-        <Fragment>
+        <div className="modal">
              <Modal isOpen={modal} toggle={toggle} >
-                 <ModalBody>
+                 <ModalBody style={{ textAlign: 'center'}}>
+                 <Button color="primary" onClick={toggle}>Close</Button>
+                 <h2>Ganadores</h2>
                         {ranking &&
-                        <div>
-                            <table style={{color:'black', zIndex:1000}}>
-                                <thead>
-                                <tr>
-                                    <th>NOMBRE</th>
-                                    <th>PUNTUACIÓN</th>
-                                </tr>
-                                </thead>
-                            <tbody>
+                        <div style={{color:'black', zIndex:1000, align: 'center'}}>
+                        
+                            <table style={{display: 'flex',  justifyContent:'space-evenly'}}>
                             {ranking.map((score, index)=>{
                                 return(
-                                    <tr>
-                                        <td key={shortId.generate()}>{score.name}</td>
-                                        <td key={shortId.generate()}>{Object.values(score)[1]}</td>
-                                    </tr>
+                                    <div style={{backgroundColor: backgroundColors[index], padding: '10px;', width:'100px', height:'100px'}}>
+                                        <div key={shortId.generate()}>
+                                        {/* <h4>{index + 1}</h4> */}
+                                        <h5>{score.name}</h5>
+                                        <h4>{Object.values(score)[1]}</h4></div>
+                                    </div>
                                 )
                             })}
-                            <Button color="primary" onClick={toggle}>Close</Button>     
-                            </tbody>
-                        </table>
+                            </table>
                         {state.user.results === undefined
                         ?
                         <div>
-                            <p>Tu puntuación final es {scoreState}. Para que tus puntuaciones se guarden y puedas competir con otros usuarios registrate <Link to='Access'>aquí</Link></p>
+                            <h2>{scoreState} puntos ! <br/> Guarda tus puntos, <br/> Reta a tu amigos <br/>...</h2> 
+                                <Link to='Access'>
+                                <Button style={{color: 'white', height: '100px', fontWeight: 'bolder'}}>LOGEANDOTE !</Button>
+                                </Link>
                         </div>
-                        : 
+                        :
                         <div>
 
                             <p>Estas en la posición X del ranking</p>
                         </div>}
                         </div>}
-
                     </ModalBody>
-             </Modal>    
-        </Fragment>
+             </Modal>
+        </div>
     )
 }
 export default Ranking;

@@ -3,12 +3,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
 import { MyContext } from '../../../context/MyProvider';
 import { useEffect } from 'react';
+import {Link} from 'react-router-dom';
 
 const ModalGame = (props) => {
 
-  const context = useContext(MyContext);
+  const { state, logIn } = React.useContext(MyContext)
 
-  const [modal, setModal] = useState(props.modalState);
+
+  const [modal, setModal] = useState(true);
   const [score, setScore] = useState(0);
 
   let time = (props.actualTime);
@@ -20,22 +22,24 @@ const ModalGame = (props) => {
   const toggle = () => setModal(!modal);
 
   useEffect(()=>{
-    if (timeInSeconds >= 100) {
-      setScore(10)
-      SaveScore(score, context.state.user.results[0].user_id, "fifty_score")
-    } else if (timeInSeconds >= 60) {
-      setScore(20)
-      SaveScore(score, context.state.user.results[0].user_id, "fifty_score")
-    } else if (timeInSeconds >= 50) {
-      setScore(30)
-      SaveScore(score, context.state.user.results[0].user_id, "fifty_score")
-    } else if (timeInSeconds >= 40) {
-      setScore(40)
-      SaveScore(score, context.state.user.results[0].user_id, "fifty_score")
-    } else {
-      setScore(60)
-      SaveScore(score, context.state.user.results[0].user_id, "fifty_score")
-    }
+    if(state.user.results !== undefined) {
+      if (timeInSeconds >= 100) {
+        setScore(10)
+        SaveScore(score, state.user.results[0].user_id, "fifty_score")
+      } else if (timeInSeconds >= 60) {
+        setScore(20)
+        SaveScore(score, state.user.results[0].user_id, "fifty_score")
+      } else if (timeInSeconds >= 50) {
+        setScore(30)
+        SaveScore(score, state.user.results[0].user_id, "fifty_score")
+      } else if (timeInSeconds >= 40) {
+        setScore(40)
+        SaveScore(score, state.user.results[0].user_id, "fifty_score")
+      } else {
+        setScore(60)
+        SaveScore(score, state.user.results[0].user_id, "fifty_score")
+      }
+  }
   },[])
 
   let ranking = () => {
@@ -60,7 +64,7 @@ const ModalGame = (props) => {
           <p>Tu tiempo es de &nbsp; &nbsp;<span style={{ fontWeight: "bold", fontSize: "x-large" }}>{props.actualTime}</span></p>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => window.location.reload()}>Restart</Button>{' '}
+            <Button color="primary" onClick={()=> setModal(!modal)}>Cerrar</Button>{' '}
         </ModalFooter>
       </Modal>
     </div>

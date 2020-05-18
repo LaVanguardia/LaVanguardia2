@@ -176,6 +176,9 @@ class GeoChallenge extends Component {
         totalAnswers: this.state.totalAnswers + 1
       })
     } else {
+        if(this.context.state.user.results !== undefined){
+          SaveScore(this.state.correctAnswers, this.context.state.user.results[0].user_id, "geo_score")
+      }
       this.setState({
         contentMap: "hidden",
         contentEnd: "notHidden",
@@ -189,9 +192,7 @@ class GeoChallenge extends Component {
   }
 
   tryAgain = event => {
-    if(this.context.state.user.results[0].user_id){
-      SaveScore(this.state.correctAnswers, this.context.state.user.results[0].user_id, "geo_score")
-  }
+
   this.setState({
     contentMap: "notHidden",
     contentEnd: "hidden",
@@ -293,7 +294,7 @@ class GeoChallenge extends Component {
                    Volver a Jugar
                 </button>
                 {this.state.finishGame &&
-                <Ranking gameName="geo_score"/>
+                <Ranking scoreState={this.state.correctAnswers} gameName="geo_score"/>
                 }
                 </div>
                 </div>

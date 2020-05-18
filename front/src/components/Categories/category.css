@@ -1,8 +1,6 @@
-
-
 .navCategories {
   background-color: #F0F0F0;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   flex-wrap: wrap;
   padding-left: 10%;
@@ -23,8 +21,6 @@
   box-shadow: 9px 9px 8px -11.5px rgba(0,0,0,0.75);
   font-size: 18px;
   letter-spacing: 0.2px;
-
-
 }
 
 .buttonCategories p {
@@ -40,21 +36,6 @@
 
 
 
-
-.imageUserLogin{
-  height: 60%;
-  width: 60%;
-  margin-top: 7%;
-
-}
-.userProfileLogo p{
-  font-family: 'Neuton', serif;
-  letter-spacing: 0.2px;
-
-
-
-}
-
 @media (max-width: 700px) {
 
   .navCategories {
@@ -68,13 +49,4 @@
     margin-top: 5px;
     padding: 0px 20px 0px 20px;
   }
-
-  .userProfileLogo p{
-    display: none;
-  }
-
-
-
-
-
 }
