@@ -42,7 +42,7 @@ app.post('/users_profiles', (req, res) => {
   const formData = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: req.body.password
   }
   console.log(`USER PROFILE REGISTERING BEFORE QUERY + ${formData.name}`)
 
@@ -216,6 +216,19 @@ app.get('/ranking/:game_score', (req, res) => {
   })
 })
 
+//CREATE RANKING USER PROFILE
+app.get('/personal_ranking/:user_id', (req, res) => {
+  const user_id=req.params.user_id
+
+  connection.query(`SELECT * FROM user_profile WHERE user_id=${user_id}`, (err, results) => {
+    if(err) {
+      res.status(500).send(err)
+    } else {
+      console.log('ROUTE ALL USERS PROFILES WORKING')
+      res.json(results)
+    }
+  })
+})
 app.listen(port,(err)=>{
     if (err) {
     throw new Error('Something bad happened...');

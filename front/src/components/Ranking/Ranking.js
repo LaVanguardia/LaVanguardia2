@@ -52,7 +52,7 @@ const Ranking=({gameName, scoreState})=>{
                         <div>
                             <h2>{scoreState} puntos ! <br/> Guarda tus puntos, <br/> Reta a tu amigos <br/>...</h2>
                                 <Link to='Access'>
-                                <Button style={{color: 'white', height: '100px', fontWeight: 'bolder'}}>LOGEANDOTE !</Button>
+                                <Button style={{color: 'white', height: '100px', fontWeight: 'bolder'}}>REGISTRARSE</Button>
                                 </Link>
                         </div>
                         :
