@@ -51,7 +51,6 @@ app.post('/users_profiles', (req, res) => {
     if(err){
       res.status(500).send('Error saving your profile')
     } else {
-      console.log('BIG SUCCESS')
       res.sendStatus(200)
     }
   })
@@ -61,15 +60,11 @@ app.post('/users_profiles', (req, res) => {
 
 //ROUTE CALLED WHEN VALIDATING LOGIN FORM
 app.post('/authenticate', (req, res, next) => {
-
-  console.log("ENTER LOGIN")
     //let's call email and password what is sent through the form inputs of email and password
   var data={
     email:req.body.email,
     password: req.body.password
   };
-  console.log('LOGIN BEFORE CONNEXION.QUERY')
-  console.log(data.email)
   connection.query(`SELECT * FROM user_profile WHERE email = ? AND password = ?`, [data.email, data.password], (err, results) => {
   // Check if email and password have been filled
     if(results){
@@ -83,7 +78,6 @@ app.post('/authenticate', (req, res, next) => {
         // MODIFY CONFIG.JS
         expiresIn: 50
       });
-      console.log('THAT WOOOORKS 1')
        //sends a json object that displays the token and a message that confirms that the login has been successfull (for the tests)
       res.json({
         results,
@@ -91,7 +85,6 @@ app.post('/authenticate', (req, res, next) => {
         token: token
 
       });
-      console.log('THAT WOOOORKS 2')
 
 
       // // SESSION : is not used yet but could be usefull later

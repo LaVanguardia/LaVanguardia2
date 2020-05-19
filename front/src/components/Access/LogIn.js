@@ -121,7 +121,7 @@ function LogIn() {
               </Alert>
             </div>
             :  <Link to="games-section" id="game-access">
-            <Button
+              <Button
                 type="submit"
                 variant="contained"
                 color="warning"
