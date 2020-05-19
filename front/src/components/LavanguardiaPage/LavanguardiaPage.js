@@ -33,9 +33,7 @@ function LavanguardiaPage() {
               <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav.Link className="nav-list-item" href="/">
-                      <Link to="/games-section">
-                        Juegos
-                      </Link>
+                    <Nav.Link className="nav-list-item" href="/games-section"> Juegos</Nav.Link>
                     </Nav.Link>
                     <Nav.Link className="nav-list-item" href="">Internacional</Nav.Link>
                     <Nav.Link className="nav-list-item" href="#home">Política</Nav.Link>
