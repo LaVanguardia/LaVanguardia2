@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
@@ -10,6 +11,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
 import logoProfile from './user_info.svg';
 import { MyContext } from '../../context/MyProvider';
+import '../Navbar/navbar.css'
 
 
 const StyledMenu = withStyles({
@@ -81,32 +83,38 @@ export default function ButtonUserLogged() {
      {state.user.results == undefined
       ? <Fragment>
           <StyledMenuItem>
-            <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+            <Link to="Access" >
+            <div className='loginButton'  style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
               <ListItemIcon>
                 <SendIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText primary="Logearse" />
-            </a>
+              </div>
+            </Link>
           </StyledMenuItem>
         </Fragment>
 
         :  <Fragment>
           <StyledMenuItem>
-          <a className='loginButton' href="/PersonalRanking" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
-            <ListItemIcon>
-              <DraftsIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Mi perfil" />
-            </a>
+          <Link to="/PersonalRanking">
+            <div className='loginButton' style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+              <ListItemIcon>
+                <DraftsIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Mi perfil" />
+            </div>
+          </Link>
           </StyledMenuItem>
         
           <StyledMenuItem>
-          <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+          <Link to="/Access"  >
+          <div className='loginButton' style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
             <ListItemIcon>
               <InboxIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary="Desconectar" />
-            </a>
+            </div>
+            </Link>
           </StyledMenuItem>
         </Fragment>
      }
