@@ -14,7 +14,7 @@ class Card extends React.Component {
                     <div className="cover">
                     </div>
                     <div className="content">
-                        <img src={this.props.icon}/>
+                        <img src={this.props.icon} alt=""/>
                     </div>
                 </ReactCardFlip>         
             </div>

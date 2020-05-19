@@ -12,10 +12,21 @@
     font-family: 'Neutron' ,Helvetica,sans-serif;
 
 }
+
 .main-img {
     width: 100%;
     margin-top: 15px;
 }
+
+.nav-list-item a {
+    color: #E7EAEF;
+}
+
+.nav-list-item a:hover {
+    color:white;
+    text-decoration: none;
+}
+
 @media (max-width: 700px) {
     #nav-list{
         display: none;
@@ -36,10 +47,12 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 .main-img {
     width: 100%;
     margin-top: 15px;
 }
+
 .center-button{
     background-color: #002A5E;
     border-radius: 4px;
@@ -49,6 +62,7 @@
     font-weight: bold;
     font-size: 14px;
 }
+
 @media (max-width: 700px) {
     #nav-list{
         display: none;
