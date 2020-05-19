@@ -231,7 +231,7 @@ class GeoChallenge extends Component {
                 <div className='titleInstructions'>
                   <div>
                     <hr/>
-                    <h3>A QUE PAÍS LE PERTENECE ESTA BANDERA</h3>
+                    <h3>A QUÉ PAÍS PERTENECE ESTA BANDERA</h3>
                     <hr/>
                   </div>
 
@@ -268,7 +268,7 @@ class GeoChallenge extends Component {
 
                         <Flag className="pinFlag" country={country.alpha2.toLowerCase()} size="small" />
                         <p>
-                          This is {country.name}
+                          Esto es {country.name}
                         </p>
 
                       </Popup>

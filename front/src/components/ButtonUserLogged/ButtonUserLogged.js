@@ -88,7 +88,7 @@ export default function ButtonUserLogged() {
               <ListItemIcon>
                 <SendIcon fontSize="small" />
               </ListItemIcon>
-              <ListItemText primary="Logearse" />
+              <ListItemText primary="Iniciar sesión" />
               </div>
             </Link>
           </StyledMenuItem>
@@ -105,7 +105,7 @@ export default function ButtonUserLogged() {
             </div>
           </Link>
           </StyledMenuItem>
-        
+
           <StyledMenuItem>
           <Link to="/Access" style={{ textDecoration: 'none' }} >
           <div className='loginButton' style={{display: 'flex', color: 'black'}}>

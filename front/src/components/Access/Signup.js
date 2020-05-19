@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SignIn() {
     const classes = useStyles();
-    
+
 
     //Submit button
     const submitInfo = async (event) => {
@@ -49,7 +49,7 @@ function SignIn() {
                 email: data.email,
                 password: data.password
             })
-             
+
         })
     }
     //checkEmptyFields array
@@ -61,7 +61,7 @@ function SignIn() {
         email: "",
         password: ""
     })
-    
+
 
     const [repeatPassword,setRepeatpassword] = useState({
         repeatPassword: ''
@@ -75,7 +75,7 @@ function SignIn() {
             <form className={classes.root} noValidate autoComplete="off" onSubmit={(event) => submitInfo(event)}>
                 <div className="row">
                     <div className="col-12">
-                        <TextField id="name" label="Name" type="text" name="name"
+                        <TextField id="name" label="Nombre" type="text" name="name"
                             value={data.name}
                             onChange={(event) => updateData({ ...data, name: event.target.value })} required />
                     </div>
@@ -86,11 +86,11 @@ function SignIn() {
                     </div>
                     <div className="col-12">
                         <FormControl className={clsx(classes.margin, classes.textField)}>
-                            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                            <InputLabel htmlFor="standard-adornment-password">Contraseña</InputLabel>
                             <Input
                                 value={data.password}
                                 id="password"
-                                name="password"
+                                name="contraseña"
                                 type={viewPassword ? 'text' : 'password'}
                                 onChange={(event) => updateData({ ...data, password: event.target.value })}
                                 endAdornment={
@@ -107,7 +107,7 @@ function SignIn() {
                     </div>
                     <div className="col-12">
                         <FormControl className={clsx(classes.margin, classes.textField)}>
-                            <InputLabel htmlFor="standard-adornment-password">Repite Password</InputLabel>
+                            <InputLabel htmlFor="standard-adornment-password">Repite contraseña</InputLabel>
                             <Input
                                 value={repeatPassword.repeatpassword}
                                 id="repitepassword"
@@ -134,7 +134,7 @@ function SignIn() {
                             className={classes.button}
                             endIcon={sendIcon}
                         >
-                            Enviar
+                         Registrarme
                         </Button>
                     </div>
                 </div>

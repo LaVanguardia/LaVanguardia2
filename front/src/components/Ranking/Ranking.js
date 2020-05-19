@@ -30,7 +30,7 @@ const Ranking=({gameName, scoreState})=>{
         <div className="modal">
              <Modal isOpen={modal} toggle={toggle} >
                  <ModalBody style={{ textAlign: 'center'}}>
-                 <Button color="primary" onClick={toggle}>Close</Button>
+                 <Button color="primary" onClick={toggle}>Cerrar</Button>
                  <h2>Ganadores</h2>
                         {ranking &&
                         <div style={{color:'black', zIndex:1000, align: 'center'}}>
@@ -50,7 +50,7 @@ const Ranking=({gameName, scoreState})=>{
                         {state.user.results === undefined
                         ?
                         <div>
-                            <h2>{scoreState} puntos ! <br/> Guarda tus puntos, <br/> Reta a tu amigos <br/>...</h2>
+                            <h2>{scoreState} puntos ! <br/> Guarda tus puntos y <br/> reta a tu amigos</h2>
                                 <Link to='Access'>
                                 <Button style={{color: 'white', height: '100px', fontWeight: 'bolder'}}>REGISTRARSE</Button>
                                 </Link>

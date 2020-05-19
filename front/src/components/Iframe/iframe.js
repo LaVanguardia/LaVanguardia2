@@ -18,7 +18,7 @@ const Iframe = () => {
     <CloseButton />
     <div>
       <h3 className="titleIframeAll">Snake</h3>
-      <iframe src={"//localhost:3000/snake"}
+      <iframe src={"/snake"}
           width="330px"
           height="260px"
           id="test"
@@ -29,7 +29,7 @@ const Iframe = () => {
     </div>
     <div>
       <h3 className="titleIframeAll">Tacle Click</h3>
-      <iframe src={"//localhost:3000/tacleclick"}
+      <iframe src={"/tacleclick"}
           width="330px"
           height="260px"
           id="test"

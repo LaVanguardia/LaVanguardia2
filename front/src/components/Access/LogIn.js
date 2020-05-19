@@ -53,7 +53,7 @@ function LogIn() {
       .then(data => logIn(data))
   }
   /* useEffect(()=>{
-    
+
     if(data!== undefined && state.score !== ''){
       //SaveScore(state.score, data.user_id, state.nameGame)
       let score= state.score
@@ -73,7 +73,7 @@ function LogIn() {
             console.log('no hace naa')
           }
         })
-      
+
     }
   },[data]) */
 
@@ -89,7 +89,7 @@ function LogIn() {
               onChange={(event) => updateData({ ...data, email: event.target.value })} />
           </div>
           <div className="col-12">
-            <TextField id="password" label="Password" type="text" name="password"
+            <TextField id="password" label="Contraseña" type="text" name="password"
               value={data.password}
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
@@ -104,7 +104,7 @@ function LogIn() {
             >
               Log In
             </Button>
-          : 
+          :
             state.user.results.length == 0
             ? <div style={{display: 'flex', flexDirection: 'column'}}>
               <Button
@@ -117,7 +117,7 @@ function LogIn() {
                 Log In
               </Button>
               <Alert color="warning">
-                Este usario no existe. Proba de nuevo o registrate.
+                Este usario no existe. Prueba de nuevo o regístrate.
               </Alert>
             </div>
             :  <Link to="games-section" id="game-access">
@@ -131,9 +131,9 @@ function LogIn() {
               </Button>
             </Link>
           }
-          
-        
-        
+
+
+
           </div>
         </div>
       </form>
