@@ -83,8 +83,8 @@ export default function ButtonUserLogged() {
      {state.user.results == undefined
       ? <Fragment>
           <StyledMenuItem>
-            <Link to="Access" >
-            <div className='loginButton'  style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+            <Link to="Access" style={{ textDecoration: 'none' }}>
+            <div className='loginButton'  style={{display: 'flex', color: 'black'}}>
               <ListItemIcon>
                 <SendIcon fontSize="small" />
               </ListItemIcon>
@@ -96,8 +96,8 @@ export default function ButtonUserLogged() {
 
         :  <Fragment>
           <StyledMenuItem>
-          <Link to="/PersonalRanking">
-            <div className='loginButton' style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+          <Link to="/PersonalRanking" style={{ textDecoration: 'none' }}>
+            <div className='loginButton' style={{display: 'flex', color: 'black'}}>
               <ListItemIcon>
                 <DraftsIcon fontSize="small" />
               </ListItemIcon>
@@ -107,8 +107,8 @@ export default function ButtonUserLogged() {
           </StyledMenuItem>
         
           <StyledMenuItem>
-          <Link to="/Access"  >
-          <div className='loginButton' style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
+          <Link to="/Access" style={{ textDecoration: 'none' }} >
+          <div className='loginButton' style={{display: 'flex', color: 'black'}}>
             <ListItemIcon>
               <InboxIcon fontSize="small" />
             </ListItemIcon>
