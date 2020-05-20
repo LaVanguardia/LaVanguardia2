@@ -37,7 +37,7 @@ const ButtonGames = (props)=>{
             <div className="headerText">
               <h2>Juegos en línea de La Vanguardia</h2>
               <hr/>
-              <p>¡Bienvenidos a la sección de juegos de La Vanguardia! Una amplia selección de juegos online gratis para que lleves la diversión a otro nivel.</p>
+              <p>¡Bienvenidos a la sección de juegos de La Vanguardia, una amplia selección de juegos online gratis para que lleves la diversión a otro nivel!</p>
             </div>
             <div>
               <div>
@@ -53,7 +53,7 @@ const ButtonGames = (props)=>{
 
           </div>
           <div>
-            <h3 className="titleFeatured">Destacados de la Semana</h3>
+            <h3 className="titleFeatured">Destacados de la semana</h3>
             <hr></hr>
             <div className="featuredGames">
               <div className="cardFeatured">
@@ -77,7 +77,7 @@ const ButtonGames = (props)=>{
                     alt="First slide"
                   />
                 </Link>
-                  <p>Con CityPlay adivina las capítales tendrás el increíble desafío de responder un quiz sobre los países y sus capitales ¡No podrás parar de jugar!</p>
+                  <p>Con CityPlay adivina las capitales tendrás el increíble desafío de responder un quiz sobre los países y sus capitales ¡No podrás parar de jugar!</p>
                 <Link to='cityplay' className=''>
                   <button className="buttonFeatured"> JUGAR AHORA </button>
                 </Link>
@@ -90,7 +90,7 @@ const ButtonGames = (props)=>{
                     alt="First slide"
                   />
                 </Link>
-                  <p>Descubre distintos lugares con Geo Challenge, un juego desafiante que te llevará a recorrer el mundo y te mantendrá ocupado por horas!</p>
+                  <p>Descubre distintos países con Geo Challenge, un juego desafiante que te llevará a recorrer el mundo y te mantendrá ocupado por horas!</p>
                 <Link to='geoChallenge' className=''>
                   <button className="buttonFeatured"> JUGAR AHORA </button>
                 </Link>
@@ -103,7 +103,7 @@ const ButtonGames = (props)=>{
                     alt="First slide"
                   />
                 </Link>
-                   <p>Con este juego adictivo pasarás horas coloreando filas y columnas, este novedoso juego pondrá a prueba tu lógica</p>
+                   <p>Con este juego adictivo pasarás horas coloreando filas y columnas. Este novedoso juego pondrá a prueba tu lógica</p>
                 <Link to='nonogram' className=''>
                   <button className="buttonFeatured"> JUGAR AHORA </button>
                 </Link>
@@ -116,7 +116,7 @@ const ButtonGames = (props)=>{
                     alt="First slide"
                   />
                 </Link>
-                   <p>Rememora el clásico juego del Snake que nos encandiló a todos con el antiguo Nokia 3310</p>
+                   <p>Rememora el clásico juego de la serpiente que nos encandiló a todos con el mítico Nokia 3310</p>
                 <Link to='snake' className=''>
                   <button className="buttonFeatured"> JUGAR AHORA </button>
                 </Link>

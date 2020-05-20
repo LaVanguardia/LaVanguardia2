@@ -9,8 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-import logoProfile from './user_info.svg';
 import { MyContext } from '../../context/MyProvider';
+import ButtonUserLogged from '../ButtonUserLogged/ButtonUserLogged'
 
 const StyledMenu = withStyles({
 
@@ -65,57 +65,7 @@ const Navbar = () => {
             </figure>
           </a>
           <div>
-      <Button
-        style={{height: '46px', marginTop: '3px'}}
-        className="userProfileLogo"
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="white"
-        onClick={handleClick}
-      >
-        <img src={logoProfile} className="imageUserLogin"/>
-      </Button>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-     {state.user.results == undefined
-      ? <Fragment>
-          <StyledMenuItem>
-            <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
-              <ListItemIcon>
-                <SendIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Logearse" />
-            </a>
-          </StyledMenuItem>
-        </Fragment>
-
-        :  <Fragment>
-          <StyledMenuItem>
-          <a className='loginButton' href="/PersonalRanking" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
-            <ListItemIcon>
-              <DraftsIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Mi perfil" />
-            </a>
-          </StyledMenuItem>
-        
-          <StyledMenuItem>
-          <a className='loginButton' href="/Access" style={{display: 'flex', textDecoration: 'none', color: 'black'}}>
-            <ListItemIcon>
-              <InboxIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Desconectar" />
-            </a>
-          </StyledMenuItem>
-        </Fragment>
-     }
-     </StyledMenu>
+          <ButtonUserLogged />
     </div>    
     </div> 
  </div>

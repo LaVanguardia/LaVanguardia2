@@ -84,7 +84,7 @@ export default function OneToFifty() {
                         </p>
                     </div>
                     <div className="col-12 col-md-6 justifyCenter">
-                        <p>Siguiente numero: &nbsp;&nbsp;&nbsp; <span style={{ fontWeight: "bold", fontSize: "x-large" }}>{currentNumber}</span></p>
+                        <p>Siguiente número: &nbsp;&nbsp;&nbsp; <span style={{ fontWeight: "bold", fontSize: "x-large" }}>{currentNumber}</span></p>
                     </div>
                 </div>
                 {/* GAME */}

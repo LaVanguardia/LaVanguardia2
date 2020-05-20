@@ -1,4 +1,4 @@
-import React, { useState, Redirect, UseEffect } from 'react';
+import React, { useState, Redirect, UseEffect, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { MyContext } from '../../context/MyProvider';
 import {Link} from 'react-router-dom';
-import SaveScore from '../../sheredFunctions/SheredFunctions'
+import { Alert } from 'reactstrap';
+
+
 
 const sendIcon = <FontAwesomeIcon icon={faPaperPlane} size='2x' color='white' />
 
@@ -51,7 +53,7 @@ function LogIn() {
       .then(data => logIn(data))
   }
   /* useEffect(()=>{
-    
+
     if(data!== undefined && state.score !== ''){
       //SaveScore(state.score, data.user_id, state.nameGame)
       let score= state.score
@@ -71,10 +73,9 @@ function LogIn() {
             console.log('no hace naa')
           }
         })
-      
+
     }
   },[data]) */
-
 
 
 
@@ -88,7 +89,7 @@ function LogIn() {
               onChange={(event) => updateData({ ...data, email: event.target.value })} />
           </div>
           <div className="col-12">
-            <TextField id="password" label="Password" type="text" name="password"
+            <TextField id="password" label="Contraseña" type="text" name="password"
               value={data.password}
               onChange={(event) => updateData({ ...data, password: event.target.value })} />
           </div>
@@ -103,7 +104,23 @@ function LogIn() {
             >
               Log In
             </Button>
-          : <Link to="games-section" id="game-access">
+          :
+            state.user.results.length == 0
+            ? <div style={{display: 'flex', flexDirection: 'column'}}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={sendIcon}
+              >
+                Log In
+              </Button>
+              <Alert color="warning">
+                Este usario no existe. Prueba de nuevo o regístrate.
+              </Alert>
+            </div>
+            :  <Link to="games-section" id="game-access">
               <Button
                 type="submit"
                 variant="contained"
@@ -112,11 +129,11 @@ function LogIn() {
               >
                 ACCEDER A LOS JUEGOS
               </Button>
-          </Link>
+            </Link>
           }
-          
-        
-        
+
+
+
           </div>
         </div>
       </form>

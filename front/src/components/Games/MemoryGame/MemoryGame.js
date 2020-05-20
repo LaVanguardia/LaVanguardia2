@@ -3,8 +3,8 @@ import './MemoryGame.css';
 import Table from './Table';
 import Header from './Header';
 import construirBaraja from './utils/construirBaraja';
-import InstructionGames from '../../SharedButtons/InstructionGames';
-import CloseButton from '../../SharedButtons/CloseButton';
+import InstructionMemory from './InstructionMemory';
+import CloseButtonMemory from './CloseButtonMemory';
 import { SaveScore } from '../../../sheredFunctions/SheredFunctions';
 import { MyContext } from '../../../context/MyProvider';
 
@@ -37,8 +37,10 @@ class MemoryGame extends React.Component {
   render() {
     return(
       <div className="memory-body">
-        <InstructionGames  instructionText="Encuentra las parejas de cartas iguales.En cuanto menos intentos lo logres, más puntos acumularás" />
-        <CloseButton />
+        <div className="memoryIcons">
+              <div><InstructionMemory /></div>
+              <div><CloseButtonMemory /></div>
+        </div>
         <Header
         tryes={this.state.tryes}
         gameFinished={this.state.winner}

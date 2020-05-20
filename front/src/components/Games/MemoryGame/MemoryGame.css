@@ -1,20 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+
 .memory-body {
-    background-image: url('../../sharedImages/memoryBackground.jpg');
-    background-size: cover;
+    background-color: #0c0e0e ;
+    /*background-size: cover;*/
     display : flex;
     flex-direction: column;
-  }
+}
+
+  .title {
+
+    font-size: 45px;
+    padding: 10px;
+    color: #fff;
+    font-family: 'Inconsolata', monospace;
+}
 
 
   div:focus {
     outline: none !important;
   }
 
-
-@media (max-width: 360px) {
-  .memory-body {
-    height: 100vh;
-    background-image: none;
-    background-color: rgb(2, 14, 63);
+  .memoryIcons {
+    display: flex;
+    justify-content: flex-end;
   }
+  
+
+  @media (min-width: 715px) {
+  .memory-body {
+    border-radius: 20px 20px 20px 20px;
+    border: 3px solid #5fbcbb;
+  }
+  
+  .outside-memory {
+    background-color: #0c0e0e;
+    padding: 10px 40px 10px 40px;
+  }
+}
+
+  @media (max-width: 360px) {
+    .memory-body {
+      height: 100vh;
+    }
 }

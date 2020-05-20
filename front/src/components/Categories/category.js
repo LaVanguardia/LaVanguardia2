@@ -12,17 +12,16 @@ const Category = (props) => {
       <div className="navCategories">
         <button className="buttonCategories">Palabras</button>
         <button className="buttonCategories">Arcade</button>
-        <button className="buttonCategories">Puzzles</button>
+        <button className="buttonCategories">Puzles</button>
         <button className="buttonCategories">Cartas</button>
         <button className="buttonCategories">Casino</button>
         <Link to='iframe' className="buttonCategories">
           <p>Todos</p>
         </Link>
-        <input className="buttonCategories" type="text" placeholder="Search.."/> 
+        <input className="buttonCategories" type="text" placeholder="Buscar.."/>
       </div>
     </div>
   )
 }
 
 export default Category
-

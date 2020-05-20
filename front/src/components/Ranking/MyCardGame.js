@@ -11,7 +11,7 @@ const MyCardGame = (props) => {
             <div className="row dateAndScore">
                 {props.record === 0
                     ? <div className="col-12">
-                        <p>Todavia no has jugado..</p>
+                        <p>Todavía no has jugado...</p>
                     </div>
                     : <>
                         <div className="col-12 col-lg-6 record">

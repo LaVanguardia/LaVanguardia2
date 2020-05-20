@@ -44,15 +44,15 @@ const ModalGame = (props) => {
 
   let ranking = () => {
     if (timeInSeconds >= 100) {
-      return `Vete a por un cafe y vuelve...${score} PTS`
+      return `Vete a por un cafe y vuelve...${score} Puntos`
     } else if (timeInSeconds >= 60) {
-      return `¡¡Normalillo!!...${score} PTS`
+      return `¡¡Normalillo!!...${score} Puntos`
     } else if (timeInSeconds >= 50) {
-      return `¡Por encima de la media!...${score} PTS`
+      return `¡Por encima de la media!...${score} Puntos`
     } else if (timeInSeconds >= 40) {
-      return `Nivel Experto...${score} PTS`
+      return `Nivel Experto...${score} Puntos`
     } else {
-      return `Nivel DIOS...${score} PTS`
+      return `Nivel DIOS...${score} Puntos`
     }
   }
 
