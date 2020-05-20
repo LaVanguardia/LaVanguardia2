@@ -16,6 +16,15 @@
     width: 100%;
     margin-top: 15px;
 }
+
+.nav-list-item a {
+    color: #E7EAEF;
+}
+
+.nav-list-item a:hover {
+    color:white;
+    text-decoration: none;
+}
 @media (max-width: 700px) {
     #nav-list{
         display: none;
