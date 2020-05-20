@@ -11,7 +11,7 @@ class Header extends React.Component {
                     Memory de presidentes
                 </div>
 
-                <div>
+                <div className="tryesAndReinit">
                 {this.props.gameFinished
                     ?
                         <div>
